@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PersonalCalendarManagement</string>
+    <string name="noti_register_success">Đăng ký tài khoản thành công</string>
+    <string name="noti_register_fail">Đăng ký tài khoản không thành công</string>
+    <string name="noti_login_success">Đăng nhập thành công</string>
+    <string name="noti_login_fail">Đăng nhập không thành công</string>
+
+    <string name="title_schedule">Thêm Lịch Trình</string>
+    <string name="title_history">Lịch Sử Công Việc</string>
+    <string name="title_statistical">Thống kê &amp; tìm kiếm công việc</string>
+
+    <string name="description_schedule">Điền thông tin sự kiện của bạn vào các ô bên dưới đây</string>
+    <string name="description_history">Dưới đây là lịch sự các công việc của bạn đã qua</string>
+    <string name="description_statistical">Nhập thông tin bạn cần tìm vào để tra cứu</string>
+    <string name="text_search_task">Tên công việc</string>
+</resources>
