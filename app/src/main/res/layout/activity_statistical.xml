@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="3dp"
+        android:layout_margin="8dp"
         android:orientation="vertical">
 
         <ImageView
@@ -67,7 +67,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_edittext"
                 android:textSize="16sp"
-                android:padding="6dp"
+                android:padding="8dp"
                 android:focusable="false"
                 android:clickable="true"
                 android:textAlignment="center"
@@ -80,7 +80,7 @@
                 android:ems="10"
                 android:background="@drawable/bg_edittext"
                 android:textSize="16sp"
-                android:padding="6dp"
+                android:padding="8dp"
                 android:textAlignment="center"
                 android:focusable="false"
                 android:clickable="true"
@@ -110,7 +110,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_edittext"
                 android:textSize="16sp"
-                android:padding="6dp"
+                android:padding="8dp"
                 android:focusable="false"
                 android:clickable="true"
                 android:textAlignment="center"
@@ -123,7 +123,7 @@
                 android:ems="10"
                 android:background="@drawable/bg_edittext"
                 android:textSize="16sp"
-                android:padding="6dp"
+                android:padding="8dp"
                 android:textAlignment="center"
                 android:focusable="false"
                 android:clickable="true"
@@ -141,12 +141,12 @@
                 android:id="@+id/editTextTextPersonName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="4dp"
+                android:padding="8dp"
                 android:ems="10"
                 android:background="@drawable/bg_edittext"
                 android:textSize="18dp"
                 android:inputType="textPersonName"
-                android:text="@string/text_search_task" />
+                android:hint="@string/text_search_task" />
 
             <Button
                 android:id="@+id/button"

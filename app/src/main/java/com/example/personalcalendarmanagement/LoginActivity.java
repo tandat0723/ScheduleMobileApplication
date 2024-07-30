@@ -26,13 +26,11 @@ public class LoginActivity extends AppCompatActivity {
 
         mtxtRegister.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            intent.putExtra("key", "Tạo tài khoản");
             startActivity(intent);
         });
 
         mbtnLogin.setOnClickListener(view -> {
             Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-            Toast.makeText(this, R.string.noti_login_success, Toast.LENGTH_SHORT).show();
             startActivity(i);
         });
     }
