@@ -2,11 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_add"
-        android:title="Thêm" />
+        android:title="Thêm lịch trình" />
     <item
         android:id="@+id/menu_statistics"
         android:title="Thống kê" />
     <item
         android:id="@+id/menu_history"
         android:title="Lịch sử" />
+    <item
+        android:id="@+id/menu_user"
+        android:title="Thông tin tài khoản" />
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Đăng xuất" />
 </menu>
