@@ -73,12 +73,18 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.menu_logout:
                     Intent intent_logout = new Intent(HomeActivity.this, LoginActivity.class);
                     startActivity(intent_logout);
-                    Toast.makeText(this, R.string.noti_logout_success, Toast.LENGTH_SHORT).show();
                     return true;
                 default:
                     return false;
             }
         });
         popup.show();
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }
