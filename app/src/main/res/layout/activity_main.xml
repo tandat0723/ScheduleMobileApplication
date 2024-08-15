@@ -11,6 +11,12 @@
         android:layout_margin="3dp"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Coming soon" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
