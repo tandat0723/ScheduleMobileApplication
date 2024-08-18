@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (roleId == 1) {
                     intent = new Intent(LoginActivity.this, AdminActivity.class);
                 } else {
-                    intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
                 }
                 startActivity(intent);
                 finish();
