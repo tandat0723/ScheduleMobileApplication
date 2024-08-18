@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_margin="6dp"
         android:orientation="vertical">
 
         <ImageView
@@ -23,131 +23,131 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textColor="@color/LightSeaGreen"
-            android:textStyle="bold"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/title_schedule" />
+            android:text="@string/title_schedule"
+            android:textAlignment="center"
+            android:textColor="@color/LightSeaGreen"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="16sp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/description_schedule" />
+            android:text="@string/description_schedule"
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:text="Tiêu đề"
             android:textColor="@color/black"
-            android:text="Tiêu đề" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/edtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
-            android:padding="8dp"
-            android:textSize="16sp"
             android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:hint="@string/hint_schedule_edittext"
             android:inputType="text"
-            android:hint="@string/hint_schedule_edittext" />
+            android:padding="8dp"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:text="Mô tả"
             android:textColor="@color/black"
-            android:text="Mô tả" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/edtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
-            android:padding="8dp"
-            android:textSize="16sp"
             android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:hint="@string/hint_schedule_edittext"
             android:inputType="text"
-            android:hint="@string/hint_schedule_edittext" />
+            android:padding="8dp"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Phân loại"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:text="Phân loại" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/edtType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
-            android:padding="8dp"
-            android:textSize="16sp"
             android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:hint="@string/hint_schedule_edittext"
             android:inputType="text"
-            android:hint="@string/hint_schedule_edittext" />
+            android:padding="8dp"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:text="Ngày tháng năm"
             android:textColor="@color/black"
-            android:text="Ngày tháng năm" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/edtDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
-            android:padding="8dp"
-            android:textSize="16sp"
             android:background="@drawable/bg_edittext"
-            android:focusable="false"
             android:clickable="true"
-            android:hint="Chọn ngày" />
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Chọn ngày"
+            android:padding="8dp"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:text="Thời gian"
             android:textColor="@color/black"
-            android:text="Thời gian" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/edtTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
-            android:padding="8dp"
-            android:textSize="16sp"
             android:background="@drawable/bg_edittext"
-            android:focusable="false"
             android:clickable="true"
-            android:hint="Chọn giờ" />
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Chọn giờ"
+            android:padding="8dp"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnAdd"
@@ -155,8 +155,8 @@
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
+            android:text="Thêm"
             android:textAllCaps="false"
-            android:textSize="16sp"
-            android:text="Thêm" />
+            android:textSize="16sp" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.personalcalendarmanagement.data.DatabaseHelper;
 
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private void init() {
         medtUsername = findViewById(R.id.edtUsername);
         medtPassword = findViewById(R.id.edtPassword);
+        mtxtForgetPassword = findViewById(R.id.txtForgetPassword);
         mtxtRegister = findViewById(R.id.txtRegister);
         mbtnLogin = findViewById(R.id.btnLogin);
         helper = new DatabaseHelper(this);
@@ -54,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("username", username);
                 editor.apply();
                 if (roleId == 1) {
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent = new Intent(LoginActivity.this, AdminActivity.class);
                 } else {
                     intent = new Intent(LoginActivity.this, HomeActivity.class);
                 }
@@ -63,7 +65,14 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, R.string.noti_login_fail, Toast.LENGTH_SHORT).show();
             }
+            assert cursor != null;
             cursor.close();
+        });
+
+        mtxtForgetPassword.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

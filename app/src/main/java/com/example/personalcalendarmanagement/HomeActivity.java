@@ -1,14 +1,16 @@
 package com.example.personalcalendarmanagement;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.personalcalendarmanagement.data.User;
 import com.example.personalcalendarmanagement.item.ItemSchedule;
 
 import java.util.ArrayList;
@@ -68,7 +70,8 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(i);
                     return true;
                 case R.id.menu_user:
-                    Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show();
+                    Intent i_user = new Intent(HomeActivity.this, UserActivity.class);
+                    startActivity(i_user);
                     return true;
                 case R.id.menu_logout:
                     Intent intent_logout = new Intent(HomeActivity.this, LoginActivity.class);
