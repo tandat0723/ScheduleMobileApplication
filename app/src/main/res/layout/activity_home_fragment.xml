@@ -4,26 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_margin="6dp"
         android:orientation="vertical">
 
-        <SearchView
-            android:id="@+id/searchView"
+        <View
+            android:id="@+id/dimBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="@android:color/black"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/searchContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:visibility="gone"
-            android:queryHint="Search..." />
+            android:layout_alignParentTop="true"
+            android:elevation="8dp"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_search_view"
+                android:elevation="8dp"
+                android:queryHint="Tìm kiếm" />
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/topLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/searchView"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -52,19 +68,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/topLayout"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnAddSchedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_add_schedule"
             android:backgroundTint="@color/white"
-            app:maxImageSize="40dp"
-            android:contentDescription="addSchedule" />
+            android:contentDescription="addSchedule"
+            android:src="@drawable/ic_add_schedule"
+            app:maxImageSize="40dp" />
 
     </RelativeLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
