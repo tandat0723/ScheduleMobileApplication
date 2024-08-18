@@ -18,5 +18,11 @@
     <string name="text_search_task">Tên công việc</string>
     <string name="hint_schedule_edittext">Nhập thông tin</string>
 
+<!--    Navigation-->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_statistical">Thống kê</string>
+    <string name="nav_history">Lịch sử</string>
+    <string name="nav_user">Tài khoản</string>
+
 
 </resources>

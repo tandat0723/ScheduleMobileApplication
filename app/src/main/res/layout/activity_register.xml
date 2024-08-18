@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:layout_margin="8dp">
+        android:layout_margin="6dp">
 
         <TextView
             android:id="@+id/textView"
@@ -81,7 +81,7 @@
                 android:background="@drawable/rounded_button"
                 android:text="Trở về"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18dp" />
 
             <Button
@@ -93,7 +93,7 @@
                 android:background="@drawable/rounded_button"
                 android:text="Đăng ký"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18dp" />
 
         </LinearLayout>

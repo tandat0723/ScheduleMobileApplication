@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.personalcalendarmanagement.fragment.HomeFragment;
+
 import java.util.Calendar;
 
 public class ScheduleActivity extends AppCompatActivity {
@@ -37,7 +39,7 @@ public class ScheduleActivity extends AppCompatActivity {
             String date = medtDate.getText().toString();
             String time = medtTime.getText().toString();
 
-            Intent intent = new Intent(ScheduleActivity.this, HomeActivity.class);
+            Intent intent = new Intent(ScheduleActivity.this, HomeFragment.class);
             intent.putExtra("title", title);
             intent.putExtra("description", description);
             intent.putExtra("date", date);
