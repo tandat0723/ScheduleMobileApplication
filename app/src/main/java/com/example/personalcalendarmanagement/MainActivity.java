@@ -1,15 +1,21 @@
 package com.example.personalcalendarmanagement;
 
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
-import com.example.personalcalendarmanagement.data.DatabaseHelper;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.personalcalendarmanagement.fragment.HistoryFragment;
+import com.example.personalcalendarmanagement.fragment.HomeFragment;
+import com.example.personalcalendarmanagement.fragment.StatisticalFragment;
+import com.example.personalcalendarmanagement.fragment.UserFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private DatabaseHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,16 +24,41 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
-    private void init(){
-        helper = new DatabaseHelper(this);
+    private void init() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        loadFragment(new HomeFragment());
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        selectedFragment = new HomeFragment();
+                        break;
+                    case R.id.nav_statistical:
+                        selectedFragment = new StatisticalFragment();
+                        break;
+                    case R.id.nav_history:
+                        selectedFragment = new HistoryFragment();
+                        break;
+                    case R.id.nav_user:
+                        selectedFragment = new UserFragment();
+                        break;
+                }
+                return loadFragment(selectedFragment);
+            }
+        });
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+            return true;
+        }
+        return false;
     }
 }

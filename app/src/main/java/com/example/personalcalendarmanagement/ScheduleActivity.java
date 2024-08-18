@@ -4,9 +4,12 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.personalcalendarmanagement.fragment.HomeFragment;
 
 import java.util.Calendar;
 
@@ -36,7 +39,7 @@ public class ScheduleActivity extends AppCompatActivity {
             String date = medtDate.getText().toString();
             String time = medtTime.getText().toString();
 
-            Intent intent = new Intent(ScheduleActivity.this, HomeActivity.class);
+            Intent intent = new Intent(ScheduleActivity.this, HomeFragment.class);
             intent.putExtra("title", title);
             intent.putExtra("description", description);
             intent.putExtra("date", date);
