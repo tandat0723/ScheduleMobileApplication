@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,70 +8,101 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
         android:layout_centerInParent="true"
+        android:layout_margin="6dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Đăng nhập"
             android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:text="Đăng nhập" />
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="34sp" />
 
-        <EditText
-            android:id="@+id/edtUsername"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="18dp"
-            android:layout_marginTop="14dp"
-            android:inputType="textPersonName"
-            android:hint="Tên đăng nhập" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="18dp"
-            android:layout_marginTop="8dp"
-            android:inputType="textPassword"
-            android:hint="Mật khẩu" />
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên đăng nhập"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="text"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtForgetPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:layout_marginTop="4dp"
             android:layout_gravity="end"
-            android:text="Quên mật khẩu" />
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="20dp"
+            android:text="Quên mật khẩu"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_button"
-            android:textColor="@color/white"
-            android:padding="10dp"
-            android:layout_marginTop="5dp"
-            android:textSize="18dp"
+            android:text="Đăng nhập"
             android:textAllCaps="false"
-            android:text="Đăng nhập" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/txtRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="Đăng ký tài khoản"
             android:textColor="@color/black"
-            android:text="Đăng ký tài khoản" />
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="16sp" />
     </LinearLayout>
 </RelativeLayout>

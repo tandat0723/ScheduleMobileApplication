@@ -22,18 +22,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/title_statistical"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24dp"
-        android:textStyle="bold" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/description_statistical"
         android:textAlignment="center" />
 
@@ -49,6 +48,7 @@
             android:id="@+id/textView14"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:text="Từ"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -57,11 +57,12 @@
             android:id="@+id/edtStartDate"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/bg_edittext"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_text"
             android:clickable="true"
             android:ems="10"
             android:focusable="false"
+            android:fontFamily="@font/poppins_regular"
             android:hint="Chọn ngày"
             android:padding="8dp"
             android:textAlignment="center"
@@ -71,10 +72,11 @@
             android:id="@+id/edtStartTime"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_edittext"
+            android:background="@drawable/rounded_text"
             android:clickable="true"
             android:ems="10"
             android:focusable="false"
+            android:fontFamily="@font/poppins_regular"
             android:hint="Chọn giờ"
             android:padding="8dp"
             android:textAlignment="center"
@@ -92,6 +94,7 @@
             android:id="@+id/textView15"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:text="Đến"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -100,11 +103,12 @@
             android:id="@+id/edtEndDate"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/bg_edittext"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_text"
             android:clickable="true"
             android:ems="10"
             android:focusable="false"
+            android:fontFamily="@font/poppins_regular"
             android:hint="Chọn ngày"
             android:padding="8dp"
             android:textAlignment="center"
@@ -114,45 +118,31 @@
             android:id="@+id/edtEndTime"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_edittext"
+            android:background="@drawable/rounded_text"
             android:clickable="true"
             android:ems="10"
             android:focusable="false"
+            android:fontFamily="@font/poppins_regular"
             android:hint="Chọn giờ"
             android:padding="8dp"
             android:textAlignment="center"
             android:textSize="16sp" />
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_edittext"
-            android:ems="10"
-            android:hint="@string/text_search_task"
-            android:inputType="textPersonName"
-            android:padding="8dp"
-            android:textSize="18dp" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:background="@drawable/rounded_button"
-            android:text="Tìm kiếm"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
-    </LinearLayout>
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Tìm kiếm"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <ListView
+        android:id="@+id/lvStatistical"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

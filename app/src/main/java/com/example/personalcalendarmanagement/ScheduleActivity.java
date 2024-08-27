@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,17 +35,32 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
         mbtnAdd.setOnClickListener(view -> {
-            String title = medtTitle.getText().toString();
-            String description = medtDescription.getText().toString();
-            String date = medtDate.getText().toString();
-            String time = medtTime.getText().toString();
+            String title = medtTitle.getText().toString().trim();
+            String description = medtDescription.getText().toString().trim();
+            String date = medtDate.getText().toString().trim();
+            String time = medtTime.getText().toString().trim();
+            String type = medtType.getText().toString().trim();
+
+            if (title.isEmpty() || description.isEmpty() || type.isEmpty() || date.isEmpty() || time.isEmpty()) {
+                if (title.isEmpty()) {
+                    medtTitle.requestFocus();
+                } else if (description.isEmpty()) {
+                    medtDescription.requestFocus();
+                } else if (type.isEmpty()) {
+                    medtType.requestFocus();
+                } else if (date.isEmpty()) {
+                    medtDate.requestFocus();
+                } else {
+                    medtTime.requestFocus();
+                }
+
+                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             Intent intent = new Intent(ScheduleActivity.this, HomeFragment.class);
-            intent.putExtra("title", title);
-            intent.putExtra("description", description);
-            intent.putExtra("date", date);
-            intent.putExtra("time", time);
             startActivity(intent);
+            saveDataBase(title, description, type, date, time);
         });
 
         medtDate.setOnClickListener(view -> {
@@ -54,6 +70,11 @@ public class ScheduleActivity extends AppCompatActivity {
         medtTime.setOnClickListener(view -> {
             showTimePickerDialog();
         });
+    }
+
+    private void saveDataBase(String title, String description, String type, String date, String time) {
+        Toast.makeText(this, "Thêm lịch trình thành công", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     private void showDatePickerDialog() {
