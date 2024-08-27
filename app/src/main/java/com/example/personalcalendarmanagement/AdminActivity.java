@@ -5,10 +5,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.personalcalendarmanagement.data.DatabaseHelper;
+import com.example.personalcalendarmanagement.data.DBHelper;
 
 public class AdminActivity extends AppCompatActivity {
-    private DatabaseHelper helper;
+    private DBHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

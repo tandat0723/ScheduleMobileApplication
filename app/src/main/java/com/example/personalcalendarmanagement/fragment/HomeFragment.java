@@ -2,6 +2,7 @@ package com.example.personalcalendarmanagement.fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,50 +20,65 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.personalcalendarmanagement.R;
 import com.example.personalcalendarmanagement.ScheduleActivity;
+import com.example.personalcalendarmanagement.adapter.CustomAdapterSchedule;
+import com.example.personalcalendarmanagement.data.DBHelper;
+import com.example.personalcalendarmanagement.data.MyDatabase;
+import com.example.personalcalendarmanagement.data.Schedule;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
-    private FloatingActionButton mbtnAddButton;
-    private ListView mlvSchedule;
+    private FloatingActionButton mBtnAddButton;
+    private ListView mLvSchedule;
     private SearchView msearchView;
     private SwipeRefreshLayout mswipeRefreshLayout;
-    private View mdimBackground;
-    private FrameLayout msearchContainer;
+    private View mDimBackground;
+    private FrameLayout mSearchContainer;
     private boolean isSearch = false;
+    private CustomAdapterSchedule adapter;
+    private List<Schedule> list;
+    private MyDatabase myDatabase;
+    private DBHelper helper;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.activity_home_fragment, container, false);
 
-        mbtnAddButton = root.findViewById(R.id.btnAddSchedule);
+        mBtnAddButton = root.findViewById(R.id.btnAddSchedule);
         msearchView = root.findViewById(R.id.searchView);
-        mlvSchedule = root.findViewById(R.id.lvSchedule);
+        mLvSchedule = root.findViewById(R.id.lvSchedule);
         mswipeRefreshLayout = root.findViewById(R.id.swipeRefreshLayout);
-        mdimBackground = root.findViewById(R.id.dimBackground);
-        msearchContainer = root.findViewById(R.id.searchContainer);
+        mDimBackground = root.findViewById(R.id.dimBackground);
+        mSearchContainer = root.findViewById(R.id.searchContainer);
+
+        list = new ArrayList<>();
+        myDatabase = new MyDatabase(getContext());
+        adapter = new CustomAdapterSchedule(getActivity(), list, myDatabase);
+        mLvSchedule.setAdapter(adapter);
 
         init();
         return root;
     }
 
     private void init() {
-        mbtnAddButton.setOnClickListener(view -> {
+        mBtnAddButton.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), ScheduleActivity.class);
             startActivity(intent);
         });
 
-        msearchContainer.setAlpha(0f);
-        mdimBackground.setAlpha(0f);
+        mSearchContainer.setAlpha(0f);
+        mDimBackground.setAlpha(0f);
 
         mswipeRefreshLayout.setOnRefreshListener(() -> {
-            if (msearchContainer.getVisibility() == View.GONE) {
-                msearchContainer.setVisibility(View.VISIBLE);
-                mdimBackground.setVisibility(View.VISIBLE);
+            if (mSearchContainer.getVisibility() == View.GONE) {
+                mSearchContainer.setVisibility(View.VISIBLE);
+                mDimBackground.setVisibility(View.VISIBLE);
 
-                // Set hieu ung va do trong suot
-                msearchContainer.animate().alpha(1f).setDuration(500).setListener(null);
-                mdimBackground.animate().alpha(0.3f).setDuration(500).setListener(null);
+                mSearchContainer.animate().alpha(1f).setDuration(500).setListener(null);
+                mDimBackground.animate().alpha(0.3f).setDuration(500).setListener(null);
 
                 msearchView.requestFocus();
                 msearchView.setIconified(false);
@@ -78,18 +94,18 @@ public class HomeFragment extends Fragment {
 
                     Toast.makeText(getContext(), "Tìm kiếm " + s, Toast.LENGTH_SHORT).show();
 
-                    msearchContainer.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
+                    mSearchContainer.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            msearchContainer.setVisibility(View.GONE);
+                            mSearchContainer.setVisibility(View.GONE);
                             isSearch = false;
                         }
                     });
 
-                    mdimBackground.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
+                    mDimBackground.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            mdimBackground.setVisibility(View.GONE);
+                            mDimBackground.setVisibility(View.GONE);
                         }
                     });
                 }
@@ -103,20 +119,36 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        mdimBackground.setOnClickListener(view -> {
-            msearchContainer.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
+        mDimBackground.setOnClickListener(view -> {
+            mSearchContainer.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    msearchContainer.setVisibility(View.GONE);
+                    mSearchContainer.setVisibility(View.GONE);
                 }
             });
 
-            mdimBackground.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
+            mDimBackground.animate().alpha(0f).setDuration(500).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mdimBackground.setVisibility(View.GONE);
+                    mDimBackground.setVisibility(View.GONE);
                 }
             });
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            String title = data.getStringExtra("title");
+            String description = data.getStringExtra("description");
+            String type = data.getStringExtra("type");
+            String date = data.getStringExtra("date");
+            String time = data.getStringExtra("time");
+
+            Schedule schedule = new Schedule(title, description, type, date, time);
+            list.add(schedule);
+            adapter.notifyDataSetChanged();
+        }
     }
 }

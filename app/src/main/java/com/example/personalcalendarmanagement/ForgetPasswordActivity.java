@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.personalcalendarmanagement.data.DatabaseHelper;
+import com.example.personalcalendarmanagement.data.DBHelper;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
-    private DatabaseHelper helper;
+    private DBHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         init();
     }
     private void init() {
-        helper = new DatabaseHelper(this);
+        helper = new DBHelper(this);
 
     }
 

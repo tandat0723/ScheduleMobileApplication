@@ -1,9 +1,7 @@
 package com.example.personalcalendarmanagement;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -28,26 +26,23 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         loadFragment(new HomeFragment());
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        selectedFragment = new HomeFragment();
-                        break;
-                    case R.id.nav_statistical:
-                        selectedFragment = new StatisticalFragment();
-                        break;
-                    case R.id.nav_history:
-                        selectedFragment = new HistoryFragment();
-                        break;
-                    case R.id.nav_user:
-                        selectedFragment = new UserFragment();
-                        break;
-                }
-                return loadFragment(selectedFragment);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    selectedFragment = new HomeFragment();
+                    break;
+                case R.id.nav_statistical:
+                    selectedFragment = new StatisticalFragment();
+                    break;
+                case R.id.nav_history:
+                    selectedFragment = new HistoryFragment();
+                    break;
+                case R.id.nav_user:
+                    selectedFragment = new UserFragment();
+                    break;
             }
+            return loadFragment(selectedFragment);
         });
     }
 
@@ -60,5 +55,10 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //
     }
 }

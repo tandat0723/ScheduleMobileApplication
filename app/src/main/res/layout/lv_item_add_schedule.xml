@@ -21,6 +21,7 @@
                 android:id="@+id/txtDayOfWeek"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Date"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -30,6 +31,7 @@
                 android:id="@+id/txtDay"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Date"
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
@@ -38,6 +40,7 @@
                 android:id="@+id/txtMonth"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Date"
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
@@ -57,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="6dp"
                 android:text="Lich trinh thu nhat"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -65,6 +69,7 @@
                 android:id="@+id/txtDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:paddingBottom="4dp"
                 android:text="Mo ta"
                 android:textSize="16sp" />
@@ -73,6 +78,7 @@
                 android:id="@+id/txtTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:paddingBottom="4dp"
                 android:text="12h"
                 android:textSize="16sp" />
