@@ -1,2 +1,2 @@
 # PersonalManagement
-Ứng dụng quản lý lịch trình cá nhân  
+Application to help manage time and work more effectively.
