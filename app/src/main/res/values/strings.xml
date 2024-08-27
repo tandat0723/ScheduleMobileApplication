@@ -4,6 +4,18 @@
     <string name="noti_register_success">Đăng ký thành công</string>
     <string name="noti_register_fail">Đăng ký không thành công</string>
     <string name="noti_login_fail">Tài khoản không chính xác</string>
+    <string name="error_user_exists">Tên người dùng đã tồn tại</string>
+
+    <string name="error_fullame_empty">Tên không để trống</string>
+    <string name="error_username_empty">Tên tài khoản không để trống</string>
+    <string name="error_password_empty">Mật khẩu không để trống</string>
+    <string name="error_confirm_password_empty">Mật khẩu không để trống</string>
+
+    <string name="error_password_confirm_mismatch">Xác nhận mật khẩu không khớp</string>
+    <string name="error_password_length">Mật khẩu ít nhất 8 ký tự</string>
+    <string name="error_password_uppercase">Mật khẩu ít nhất một ký tự hoa</string>
+    <string name="error_password_lowercase">Mật khẩu ít nhất một ký tự thường</string>
+    <string name="error_password_digit">Mật khẩu ít nhất một ký tự số</string>
 
     <!--    Login-->
     <string name="noti_register_confirm">Mật khẩu không khớp</string>
@@ -18,11 +30,16 @@
     <string name="text_search_task">Tên công việc</string>
     <string name="hint_schedule_edittext">Nhập thông tin</string>
 
-<!--    Navigation-->
+    <!--    Navigation-->
     <string name="nav_home">Trang chủ</string>
     <string name="nav_statistical">Thống kê</string>
     <string name="nav_history">Lịch sử</string>
     <string name="nav_user">Tài khoản</string>
 
-
+<!--    Schedule-->
+    <string name="error_schedule_title">Tiêu đề không để trống</string>
+    <string name="error_schedule_description">Mô tả không để trống</string>
+    <string name="error_schedule_type">Phân loại không để trống</string>
+    <string name="error_schedule_date">Ngày không để trống</string>
+    <string name="error_schedule_time">Giờ không để trống</string>
 </resources>

@@ -7,8 +7,8 @@ public class User {
     private String password;
     private Roles role_id;
 
-    public User(int user_id, Roles role_id, String username, String password) {
-        this.user_id = user_id;
+    public User(String name, String username, String password, Roles role_id) {
+        this.name = name;
         this.role_id = role_id;
         this.username = username;
         this.password = password;

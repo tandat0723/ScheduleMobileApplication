@@ -12,13 +12,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.personalcalendarmanagement.data.DatabaseHelper;
+import com.example.personalcalendarmanagement.Utils.Utils;
+import com.example.personalcalendarmanagement.data.MyDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     private Button mbtnLogin;
     private TextView mtxtRegister, mtxtForgetPassword;
     private EditText medtUsername, medtPassword;
-    DatabaseHelper helper;
+    private MyDatabase myDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         mtxtForgetPassword = findViewById(R.id.txtForgetPassword);
         mtxtRegister = findViewById(R.id.txtRegister);
         mbtnLogin = findViewById(R.id.btnLogin);
-        helper = new DatabaseHelper(this);
+        myDatabase = new MyDatabase(this);
 
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         String save = sharedPreferences.getString("username", "");
@@ -47,32 +48,53 @@ public class LoginActivity extends AppCompatActivity {
         mbtnLogin.setOnClickListener(view -> {
             String username = medtUsername.getText().toString();
             String password = medtPassword.getText().toString();
+            String checkError = validate(username, password);
+            if (checkError != null) {
+                Toast.makeText(this, checkError, Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            Cursor cursor = helper.checkLogin(username, password);
+            Cursor cursor = myDatabase.checkLogin(username, Utils.hashPassword(password));
+
             if (cursor != null && cursor.moveToFirst()) {
                 @SuppressLint("Range") int roleId = cursor.getInt(cursor.getColumnIndex("role_id"));
                 Intent intent;
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("username", username);
                 editor.apply();
-                if (roleId == 1) {
+
+                if (roleId == 1 || roleId == 3) {
                     intent = new Intent(LoginActivity.this, AdminActivity.class);
                 } else {
                     intent = new Intent(LoginActivity.this, MainActivity.class);
                 }
                 startActivity(intent);
                 finish();
+                cursor.close();
             } else {
                 Toast.makeText(this, R.string.noti_login_fail, Toast.LENGTH_SHORT).show();
             }
-            assert cursor != null;
-            cursor.close();
         });
 
-        mtxtForgetPassword.setOnClickListener(view -> {
+        mtxtForgetPassword.setOnClickListener(view ->
+
+        {
             Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
             startActivity(intent);
             finish();
         });
+    }
+
+    private String validate(String username, String password) {
+        if (username.isEmpty()) {
+            medtUsername.requestFocus();
+            return getString(R.string.error_username_empty);
+        }
+        if (password.isEmpty()) {
+            medtPassword.requestFocus();
+            return getString(R.string.error_password_empty);
+        }
+
+        return null;
     }
 }

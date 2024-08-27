@@ -2,6 +2,7 @@ package com.example.personalcalendarmanagement.fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +20,14 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.personalcalendarmanagement.R;
 import com.example.personalcalendarmanagement.ScheduleActivity;
+import com.example.personalcalendarmanagement.adapter.CustomAdapterSchedule;
+import com.example.personalcalendarmanagement.data.DBHelper;
+import com.example.personalcalendarmanagement.data.MyDatabase;
+import com.example.personalcalendarmanagement.data.Schedule;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
     private FloatingActionButton mBtnAddButton;
@@ -29,6 +37,10 @@ public class HomeFragment extends Fragment {
     private View mDimBackground;
     private FrameLayout mSearchContainer;
     private boolean isSearch = false;
+    private CustomAdapterSchedule adapter;
+    private List<Schedule> list;
+    private MyDatabase myDatabase;
+    private DBHelper helper;
 
     @Nullable
     @Override
@@ -41,6 +53,11 @@ public class HomeFragment extends Fragment {
         mswipeRefreshLayout = root.findViewById(R.id.swipeRefreshLayout);
         mDimBackground = root.findViewById(R.id.dimBackground);
         mSearchContainer = root.findViewById(R.id.searchContainer);
+
+        list = new ArrayList<>();
+        myDatabase = new MyDatabase(getContext());
+        adapter = new CustomAdapterSchedule(getActivity(), list, myDatabase);
+        mLvSchedule.setAdapter(adapter);
 
         init();
         return root;
@@ -60,7 +77,6 @@ public class HomeFragment extends Fragment {
                 mSearchContainer.setVisibility(View.VISIBLE);
                 mDimBackground.setVisibility(View.VISIBLE);
 
-                // Set hieu ung va do trong suot
                 mSearchContainer.animate().alpha(1f).setDuration(500).setListener(null);
                 mDimBackground.animate().alpha(0.3f).setDuration(500).setListener(null);
 
@@ -120,6 +136,19 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            String title = data.getStringExtra("title");
+            String description = data.getStringExtra("description");
+            String type = data.getStringExtra("type");
+            String date = data.getStringExtra("date");
+            String time = data.getStringExtra("time");
 
-
+            Schedule schedule = new Schedule(title, description, type, date, time);
+            list.add(schedule);
+            adapter.notifyDataSetChanged();
+        }
+    }
 }

@@ -9,6 +9,16 @@ public class Schedule {
     private String date;
     private String time;
 
+    public Schedule(){}
+
+    public Schedule(String title, String description, String type, String date, String time){
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.type = type;
+    }
+
     public Schedule(int schedule_id, User user_id, String title, String description, String type, String date, String time) {
         this.schedule_id = schedule_id;
         this.user_id = user_id;
