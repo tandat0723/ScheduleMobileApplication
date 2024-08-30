@@ -2,31 +2,33 @@ package com.example.personalcalendarmanagement.data;
 
 public class Schedule {
     private int schedule_id;
-    private User user_id;
     private String title;
     private String description;
     private String type;
     private String date;
     private String time;
+    private int user_id;
 
-    public Schedule(){}
-
-    public Schedule(String title, String description, String type, String date, String time){
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.time = time;
-        this.type = type;
+    public Schedule() {
     }
 
-    public Schedule(int schedule_id, User user_id, String title, String description, String type, String date, String time) {
-        this.schedule_id = schedule_id;
-        this.user_id = user_id;
+    public Schedule(String title, String description, String type, String date, String time, int user_id) {
         this.title = title;
         this.description = description;
         this.date = date;
         this.time = time;
         this.type = type;
+        this.user_id = user_id;
+    }
+
+    public Schedule(int schedule_id, String title, String description, String type, String date, String time, int user_id) {
+        this.schedule_id = schedule_id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.type = type;
+        this.user_id = user_id;
     }
 
     public int getSchedule_id() {
@@ -37,11 +39,11 @@ public class Schedule {
         this.schedule_id = schedule_id;
     }
 
-    public User getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(User user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

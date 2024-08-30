@@ -35,7 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
         medtConfirmPassword = findViewById(R.id.edtConfirmPassword);
         mbtnRegister = findViewById(R.id.btnRegister);
         mbtnBack = findViewById(R.id.btnBack);
-
         myDatabase = new MyDatabase(this);
 
         mbtnBack.setOnClickListener(view -> {

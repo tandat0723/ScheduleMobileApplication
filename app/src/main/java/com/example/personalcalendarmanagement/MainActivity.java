@@ -7,22 +7,32 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.personalcalendarmanagement.data.Schedule;
 import com.example.personalcalendarmanagement.fragment.HistoryFragment;
 import com.example.personalcalendarmanagement.fragment.HomeFragment;
 import com.example.personalcalendarmanagement.fragment.StatisticalFragment;
 import com.example.personalcalendarmanagement.fragment.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements HomeFragment.OnScheduleAddedListener {
+    private HomeFragment homeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState == null){
+            homeFragment = new HomeFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_home, homeFragment).commit();
+        }else {
+            homeFragment = (HomeFragment) getSupportFragmentManager().findFragmentById(R.id.nav_home);
+        }
+
         init();
     }
 
     private void init() {
+        homeFragment= (HomeFragment) getSupportFragmentManager().findFragmentById(R.id.nav_home);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         loadFragment(new HomeFragment());
 
@@ -60,5 +70,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //
+    }
+
+    @Override
+    public void onScheduleAdded(Schedule schedule) {
+        if (homeFragment != null){
+            homeFragment.addSchedule(schedule);
+        }
     }
 }

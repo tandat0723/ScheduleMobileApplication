@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.personalcalendarmanagement.data.MyDatabase;
 import com.example.personalcalendarmanagement.R;
+import com.example.personalcalendarmanagement.data.MyDatabase;
 import com.example.personalcalendarmanagement.data.Schedule;
 
 import java.text.ParseException;
@@ -24,20 +24,20 @@ public class CustomAdapterSchedule extends ArrayAdapter<Schedule> {
     private Context context;
     private List<Schedule> listSchedule;
     private MyDatabase myDatabase;
+    private int resource;
 
-    public CustomAdapterSchedule(Context context, List<Schedule> listSchedule, MyDatabase myDatabase) {
+    public CustomAdapterSchedule(Context context, int resource, List<Schedule> listSchedule) {
         super(context, 0, listSchedule);
         this.context = context;
         this.listSchedule = listSchedule;
-        this.myDatabase = myDatabase;
+        this.resource = resource;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.lv_item_add_schedule, parent, false);
-        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = inflater.inflate(resource, parent, false);
 
         TextView tvTitle = convertView.findViewById(R.id.txtTitle);
         TextView tvDescription = convertView.findViewById(R.id.txtDescription);

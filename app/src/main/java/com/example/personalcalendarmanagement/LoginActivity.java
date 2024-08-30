@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.personalcalendarmanagement.Utils.Utils;
 import com.example.personalcalendarmanagement.data.MyDatabase;
+import com.example.personalcalendarmanagement.data.User;
 
 public class LoginActivity extends AppCompatActivity {
     private Button mbtnLogin;
@@ -57,9 +58,11 @@ public class LoginActivity extends AppCompatActivity {
             Cursor cursor = myDatabase.checkLogin(username, Utils.hashPassword(password));
 
             if (cursor != null && cursor.moveToFirst()) {
+                @SuppressLint("Range") int userId = cursor.getInt(cursor.getColumnIndex("user_id"));
                 @SuppressLint("Range") int roleId = cursor.getInt(cursor.getColumnIndex("role_id"));
                 Intent intent;
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("user_id", userId);
                 editor.putString("username", username);
                 editor.apply();
 

@@ -2,8 +2,9 @@ package com.example.personalcalendarmanagement.fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.personalcalendarmanagement.R;
 import com.example.personalcalendarmanagement.ScheduleActivity;
 import com.example.personalcalendarmanagement.adapter.CustomAdapterSchedule;
-import com.example.personalcalendarmanagement.data.DBHelper;
 import com.example.personalcalendarmanagement.data.MyDatabase;
 import com.example.personalcalendarmanagement.data.Schedule;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,7 +40,11 @@ public class HomeFragment extends Fragment {
     private CustomAdapterSchedule adapter;
     private List<Schedule> list;
     private MyDatabase myDatabase;
-    private DBHelper helper;
+    private int userId;
+
+    public interface OnScheduleAddedListener {
+        void onScheduleAdded(Schedule schedule);
+    }
 
     @Nullable
     @Override
@@ -55,9 +59,17 @@ public class HomeFragment extends Fragment {
         mSearchContainer = root.findViewById(R.id.searchContainer);
 
         list = new ArrayList<>();
-        myDatabase = new MyDatabase(getContext());
-        adapter = new CustomAdapterSchedule(getActivity(), list, myDatabase);
+        myDatabase = new MyDatabase(getActivity());
+        adapter = new CustomAdapterSchedule(getActivity(), R.layout.lv_item_add_schedule, list);
         mLvSchedule.setAdapter(adapter);
+
+//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+//        userId = sharedPreferences.getInt("user_id", -1);
+//        if (userId != -1) {
+        loadSchedule();
+//        } else {
+//            Toast.makeText(getActivity(), "Không tìm thấy thông tin người dùng", Toast.LENGTH_SHORT).show();
+//        }
 
         init();
         return root;
@@ -136,19 +148,25 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            String title = data.getStringExtra("title");
-            String description = data.getStringExtra("description");
-            String type = data.getStringExtra("type");
-            String date = data.getStringExtra("date");
-            String time = data.getStringExtra("time");
+    private void loadSchedule() {
+//        list = myDatabase.getAllScheduleByUser(userId);
+//        adapter = new CustomAdapterSchedule(getContext(), R.layout.lv_item_add_schedule, list);
+//        mLvSchedule.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
 
-            Schedule schedule = new Schedule(title, description, type, date, time);
-            list.add(schedule);
-            adapter.notifyDataSetChanged();
-        }
+        userId = getCurrentUserId();
+        list.clear();
+        list.addAll(myDatabase.getAllScheduleByUser(userId));
+        adapter.notifyDataSetChanged();
+    }
+
+    private int getCurrentUserId() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        return sharedPreferences.getInt("user_id", -1);
+    }
+
+    public void addSchedule(Schedule schedule) {
+        list.add(schedule);
+        adapter.notifyDataSetChanged();
     }
 }

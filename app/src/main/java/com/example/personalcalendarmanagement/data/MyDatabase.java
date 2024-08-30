@@ -1,13 +1,15 @@
 package com.example.personalcalendarmanagement.data;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.personalcalendarmanagement.Utils.Utils;
-import com.example.personalcalendarmanagement.data.DBHelper;
-import com.example.personalcalendarmanagement.data.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyDatabase {
     private DBHelper helper;
@@ -67,13 +69,33 @@ public class MyDatabase {
         values.put(DBHelper.COLUMN_SCHEDULE_DATE, schedule.getDate());
         values.put(DBHelper.COLUMN_SCHEDULE_TYPE, schedule.getType());
         values.put(DBHelper.COLUMN_SCHEDULE_TIME, schedule.getTime());
-        values.put(DBHelper.COLUMN_SCHEDULE_USER_ID, schedule.getUser_id().getUser_id());
+        values.put(DBHelper.COLUMN_SCHEDULE_USER, schedule.getUser_id());
 
-        db.close();
         return db.insert(DBHelper.TABLE_SCHEDULE, null, values);
     }
 
-    public void close() {
-        helper.close();
+    public List<Schedule> getAllScheduleByUser(int userId) {
+        List<Schedule> scheduleList = new ArrayList<>();
+        Cursor cursor = db.query(DBHelper.TABLE_SCHEDULE,
+                new String[]{"schedule_id", "title", "description", "type", "date", "time", "user_id"},
+                DBHelper.COLUMN_SCHEDULE_USER + " =?",
+                new String[]{String.valueOf(userId)}, null, null, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("schedule_id"));
+                @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("title"));
+                @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex("description"));
+                @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
+                @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));
+                @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time"));
+                @SuppressLint("Range") int user_id = cursor.getInt(cursor.getColumnIndex("user_id"));
+
+                Schedule schedule = new Schedule(id, title, description, type, date, time, user_id);
+                scheduleList.add(schedule);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return scheduleList;
     }
 }

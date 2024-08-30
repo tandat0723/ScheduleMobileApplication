@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,8 @@ public class ScheduleActivity extends AppCompatActivity {
     private EditText medtTitle, medtDescription, medtDate, medtTime, medtType;
     private Button mbtnAdd;
     private MyDatabase myDatabase;
+    private HomeFragment.OnScheduleAddedListener listener;
+
 
 
     @Override
@@ -50,8 +53,14 @@ public class ScheduleActivity extends AppCompatActivity {
                 Toast.makeText(this, checkError, Toast.LENGTH_SHORT).show();
                 return;
             }
+            SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            int userId = sharedPreferences.getInt("user_id", -1);
+            if (userId == -1) {
+                Toast.makeText(this, "Tài khoản không hợp lệ", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            Schedule schedule = new Schedule(title, description, type, date, time);
+            Schedule schedule = new Schedule(title, description, type, date, time, userId);
             long result = myDatabase.addSchedule(schedule);
 
             if (result > 0) {
@@ -126,4 +135,6 @@ public class ScheduleActivity extends AppCompatActivity {
 
         return null;
     }
+
+
 }
