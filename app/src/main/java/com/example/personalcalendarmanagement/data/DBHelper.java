@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Column for table schedule
     public static final String COLUMN_SCHEDULE_ID = "schedule_id";
-    public static final String COLUMN_SCHEDULE_USER_ID = "user_id";
+    public static final String COLUMN_SCHEDULE_USER = "user_id";
     public static final String COLUMN_SCHEDULE_TITLE = "title";
     public static final String COLUMN_SCHEDULE_DATE = "date";
     public static final String COLUMN_SCHEDULE_TIME = "time";
@@ -40,9 +40,9 @@ public class DBHelper extends SQLiteOpenHelper {
             " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_ROLE_NAME + " TEXT NOT NULL)";
 
     private static final String CREATE_TABLE_SCHEDULE = "CREATE TABLE " + TABLE_SCHEDULE + "(" + COLUMN_SCHEDULE_ID +
-            " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SCHEDULE_USER_ID + " INTEGER," + COLUMN_SCHEDULE_TITLE + " TEXT," +
+            " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SCHEDULE_USER + " INTEGER," + COLUMN_SCHEDULE_TITLE + " TEXT," +
             COLUMN_SCHEDULE_DESCRIPTION + " TEXT," + COLUMN_SCHEDULE_DATE + " TEXT," + COLUMN_SCHEDULE_TIME + " TEXT," +
-            COLUMN_SCHEDULE_TYPE + " TEXT," + " FOREIGN KEY (" + COLUMN_SCHEDULE_USER_ID + ") REFERENCES " + TABLE_USER + "(" + COLUMN_USER_ID + "))";
+            COLUMN_SCHEDULE_TYPE + " TEXT," + " FOREIGN KEY (" + COLUMN_SCHEDULE_USER + ") REFERENCES " + TABLE_USER + "(" + COLUMN_USER_ID + "))";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

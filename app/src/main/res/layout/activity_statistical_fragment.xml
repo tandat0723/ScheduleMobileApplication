@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="6dp"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_margin="6dp">
 
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
@@ -20,6 +20,7 @@
         android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/poppins_regular"
@@ -32,13 +33,16 @@
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView12"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/description_statistical"
         android:textAlignment="center" />
 
     <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView13"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
@@ -51,7 +55,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Từ"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/edtStartDate"
@@ -66,7 +70,7 @@
             android:hint="Chọn ngày"
             android:padding="8dp"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/edtStartTime"
@@ -80,12 +84,14 @@
             android:hint="Chọn giờ"
             android:padding="8dp"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/layout1"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -97,7 +103,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Đến"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/edtEndDate"
@@ -112,7 +118,7 @@
             android:hint="Chọn ngày"
             android:padding="8dp"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/edtEndTime"
@@ -126,24 +132,59 @@
             android:hint="Chọn giờ"
             android:padding="8dp"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="140dp"
+    <LinearLayout
+        android:id="@+id/layout3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Tìm kiếm"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:layout_below="@+id/layout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtSearch"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_text"
+            android:fontFamily="@font/poppins_regular"
+            android:singleLine="true"
+            android:gravity="center"
+            android:hint="Tìm lịch trình"
+            android:padding="8dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Tìm kiếm"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/txtEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Chưa có lịch trình nào!"
+        android:textSize="18sp"
+        android:visibility="gone" />
 
     <ListView
         android:id="@+id/lvStatistical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout3"
+        android:scrollbars="none" />
+</RelativeLayout>
 

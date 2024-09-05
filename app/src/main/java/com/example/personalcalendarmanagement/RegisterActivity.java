@@ -35,7 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
         medtConfirmPassword = findViewById(R.id.edtConfirmPassword);
         mbtnRegister = findViewById(R.id.btnRegister);
         mbtnBack = findViewById(R.id.btnBack);
-
         myDatabase = new MyDatabase(this);
 
         mbtnBack.setOnClickListener(view -> {
@@ -59,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            Roles roleId = Roles.USER;
+            Roles roleId = Roles.User;
             User user = new User(fullName, username, Utils.hashPassword(password), roleId);
             long result = myDatabase.addUser(user);
 
@@ -105,9 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
             return getString(R.string.error_password_digit);
         }
 
-//        if (!password.matches(".*[!@#$%^&*+=?-].*")) {
-//            return getString(R.string.error_password_special_char);
-//        }
         return null;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.personalcalendarmanagement;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -57,9 +56,11 @@ public class LoginActivity extends AppCompatActivity {
             Cursor cursor = myDatabase.checkLogin(username, Utils.hashPassword(password));
 
             if (cursor != null && cursor.moveToFirst()) {
-                @SuppressLint("Range") int roleId = cursor.getInt(cursor.getColumnIndex("role_id"));
+                int userId = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"));
+                int roleId = cursor.getInt(cursor.getColumnIndexOrThrow("role_id"));
                 Intent intent;
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("user_id", userId);
                 editor.putString("username", username);
                 editor.apply();
 
@@ -76,9 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mtxtForgetPassword.setOnClickListener(view ->
-
-        {
+        mtxtForgetPassword.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
             startActivity(intent);
             finish();

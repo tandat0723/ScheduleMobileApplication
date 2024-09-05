@@ -42,4 +42,13 @@
     <string name="error_schedule_type">Phân loại không để trống</string>
     <string name="error_schedule_date">Ngày không để trống</string>
     <string name="error_schedule_time">Giờ không để trống</string>
+
+    <string name="noti_add_schdule_fail">Thêm lịch trình không thành công</string>
+    <string name="noti_add_schedule_success">Thêm lịch trình thành công</string>
+    <string name="noti_update_schedule">Lịch trình đã được cập nhật</string>
+
+    <string-array name="role_array">
+        <item>User</item>
+        <item>AdminUser</item>
+    </string-array>
 </resources>
