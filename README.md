@@ -16,7 +16,7 @@
 Mở terminal hoặc command prompt và thực hiện lệnh sau:
 ```bash
 git clone https://github.com/tandat0723/schedulemobileapplication.git
-cd schedule-manage-mobile
+cd schedulemobileapplication
 ```
 
 ### 2️⃣ Mở dự án bằng Android Studio
