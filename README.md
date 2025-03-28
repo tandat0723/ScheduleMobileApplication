@@ -15,7 +15,7 @@
 ### 1️⃣ Sao chép kho lưu trữ
 Mở terminal hoặc command prompt và thực hiện lệnh sau:
 ```bash
-git clone https://github.com/tandat0723/schedule-manage-mobile.git
+git clone https://github.com/tandat0723/schedulemobileapplication.git
 cd schedule-manage-mobile
 ```
 
